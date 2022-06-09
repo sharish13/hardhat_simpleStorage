@@ -36,12 +36,17 @@ describe("SimpleStorage", function () {
     );
     await transactionResponse.wait(1);
 
-    let { num, currperson1 } = await simpleStorage.people(0);
-    // assert.equal(num, favoriteNum);
-    // assert.equal(currperson1, person1);
+    let { favoriteNumber, name } = await simpleStorage.people(0);
+    assert.equal(favoriteNumber, favoriteNum);
+    assert.equal(name, person1);
+    //or you can read array like this
+    // const person = await simpleStorage.people(0);
+    // assert.equal(person.name, person1);
+    // assert.equal(person.favoriteNumber, favoriteNum);
+
     const currfavoritNum = await simpleStorage.nameToFavoriteNumber("harry");
     assert.equal(currfavoritNum.toString(), favoriteNum);
 
-    console.log(`haryy logging : ${currperson1}`);
+    console.log(`haryy logging : ${name}`);
   });
 });
